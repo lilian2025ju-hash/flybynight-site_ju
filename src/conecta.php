@@ -32,4 +32,3 @@ try {
 }
 
 //teste provisório
-var_dump($conexao);
