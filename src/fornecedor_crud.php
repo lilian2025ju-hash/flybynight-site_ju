@@ -41,7 +41,7 @@ function inserirFornecedor(PDO $conexao, string $nome): void
 }
 
 // Usada em fornecedor/ editar.php
-function buscarFornecedorPorid(PDO $conexao, int $id)
+function buscarFornecedorPorId(PDO $conexao, int $id)
 {
     //comando SQL
     $sql = "SELECT * FROM fornecedores WHERE id = :id";
