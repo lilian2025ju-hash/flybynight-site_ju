@@ -13,7 +13,20 @@ $id =$_GET['id'];
 //2) Ao término , a função devolve (retorna) um array com os dados do fornecedor
 $fornecedor = buscarFornecedorPorId($conexao, $id);
 
-var_dump($fornecedor)
+if($_SERVER['REQUEST_METHOD']=== 'POST'){
+   //Capturamos o nome digitado no formulário
+   $nome = $_POST['nome'];
+   
+   //Chamamos a função de Uptade (passando os dados pra ela)
+   atualizarFornecedor($conexao , $id, $nome);
+
+   //Redirecionamos para a página que mostra todos os fornecedores
+   header("location:listar.php");
+
+   //Encerramos/interropemos qualquer outro processo
+   //Sempre use exit após o redirecionamneto com Header()
+   exit;
+}
 ?>
 
 

@@ -45,8 +45,8 @@ $fornecedores = buscarFornecedores($conexao);
                             <td><?= $fornecedor["nome"] ?> </td>
 
                             <td>
-                            <a href="editar.php?id=<?= $fornecedor["id"]?>">Editar</a>
-                            <a href="excluir.php" class="excluir">Excluir</a>
+                                <a href="editar.php?id=<?= $fornecedor["id"] ?>">Editar</a>
+                                <a href="excluir.php" class="excluir">Excluir</a>
                             </td>
 
 
