@@ -5,7 +5,7 @@ require_once "../src/fornecedor_crud.php";
 //Chamando a função (e passando os dados da coenexão), e recebendo/ guardando o array com os dados dos fornecedores
 $fornecedores = buscarFornecedores($conexao);
 
- //var_dump($fornecedores);
+//var_dump($fornecedores);
 ?>
 
 <!DOCTYPE html>
@@ -39,12 +39,19 @@ $fornecedores = buscarFornecedores($conexao);
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($fornecedores as $fornecedor): ?>
-                    <tr>
-                        <td><?= $fornecedor["id"] ?> </td>
-                        <td><?= $fornecedor["nome"] ?> </td>
-                    </tr>
-                 <?php endforeach;  ?>
+                    <?php foreach ($fornecedores as $fornecedor): ?>
+                        <tr>
+                            <td><?= $fornecedor["id"] ?> </td>
+                            <td><?= $fornecedor["nome"] ?> </td>
+
+                            <td>
+                            <a href="editar.php?id=<?= $fornecedor["id"]?>">Editar</a>
+                            <a href="excluir.php" class="excluir">Excluir</a>
+                            </td>
+
+
+                        </tr>
+                    <?php endforeach;  ?>
                 </tbody>
             </table>
         </div>
