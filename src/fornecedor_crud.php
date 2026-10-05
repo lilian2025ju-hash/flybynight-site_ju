@@ -65,22 +65,23 @@ function atualizarFornecedor(PDO $conexao, int $id, string $nome):void
 
 
 // Comando SQL
-  //$sql = "UPDATE fornecedores SET nome = :nome WHERE id = :id";
+  $sql = "UPDATE fornecedores SET nome = :nome WHERE id = :id";
  
   // Preparar comando SQL
-  //$consulta = $conexao->prepare($sql);
+  $consulta = $conexao->prepare($sql);
  
   // Atribuir valores aos campos
-  //$consulta->bindValue(":nome", $nome);
-  //$consulta->bindValue(":id", $id);
+  $consulta->bindValue(":nome", $nome);
+  $consulta->bindValue(":id", $id);
  
   // Executar
-  //$consulta->execute();
+  $consulta->execute();
 }
 
 function excluirFornecedor(Pdo $conexao, int $id):void{
     $sql ="DELETE FROM fornecedores WHERE id";
     $consulta ->bindValue(": id", $id);
     $consulta -> execute();
+    $consulta ->execute();
 }
  
