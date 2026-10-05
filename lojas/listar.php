@@ -1,13 +1,8 @@
 <?php 
-// lojas/inserir.php
+// lojas/listar.php
 require_once "../src/loja_crud.php";
 
-if($_SERVER['REQUEST_METHOD'] === "POST"){
-    $nome = $_POST['nome'];
-    inserirLoja($conexao, $nome);
-    header("location:listar.php");
-    exit;
-}
+$lojas = buscarLojas($conexao);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -15,7 +10,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar loja - Fly By Night</title>
+    <title>Lojas - Fly By Night</title>
     <link rel="stylesheet" href="../css/estilos.css">
 </head>
 
@@ -26,16 +21,34 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
     require '../componentes/cabecalho.php';
     ?>
     <main>
-        <h2>Cadastrar loja</h2>
-        <!-- Modelo visual: os campos não são enviados nem persistidos. -->
-        <form action="" method="post">
-            <div>
-                <label for="nome">Nome:</label>
-                <input type="text" name="nome" id="nome" maxlength="100" required>
-            </div>
-            <button type="submit">Salvar</button>
-        </form>
-        <a href="listar.php">← Voltar</a>
+        <h2>Lojas</h2>
+        <p>Ao excluir uma loja, seus vínculos e estoques por produto também serão removidos. Os produtos continuarão cadastrados.</p>
+        <div class="barra-acoes"><a class="botao" href="inserir.php">+ Nova loja</a></div>
+        <!-- Os registros serão carregados dinamicamente quando o back-end for implementado. -->
+        <div class="area-tabela" tabindex="0">
+            <table>
+                <caption>Relação de Lojas</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+<?php foreach($lojas as $loja): ?>                    
+                    <tr>
+                        <td> <?= $loja['id'] ?> </td>
+                        <td> <?= $loja['nome'] ?> </td>
+                        <td>
+                            <a href="editar.php?id=<?= $loja['id'] ?>">Editar</a>
+                            <a href="excluir.php?id=<?= $loja['id'] ?>">Excluir</a>
+                        </td>
+                    </tr>
+<?php endforeach; ?>                    
+                </tbody>
+            </table>
+        </div>
     </main>
 </body>
 
