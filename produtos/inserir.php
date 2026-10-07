@@ -1,4 +1,4 @@
-<?php 
+<?php
 // produtos/inserir.php
 require_once "../src/fornecedor_crud.php";
 require_once "../src/produto_crud.php";
@@ -10,7 +10,7 @@ $fornecedores = buscarFornecedores($conexao);
 /* Exercícios: */
 
 // 1) Detectar o acionamento do formulário de inserção
-if($_SERVER["REQUEST_METHOD"] === "POST"){
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // 2) Capturar os dados de cada campo do formulário
     // Obs.: atenção a qual é o name de cada campo
     $nome = $_POST['nome'];
@@ -71,10 +71,10 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
                 <label for="fornecedor">Fornecedor:</label>
                 <select name="fornecedor" id="fornecedor" required>
                     <option value=""></option>
-                    
-                    <?php foreach($fornecedores as $fornecedor): ?>
-                        <option value="<?= $fornecedor['id'] ?>"> 
-                            <?= $fornecedor['nome'] ?> 
+
+                    <?php foreach ($fornecedores as $fornecedor): ?>
+                        <option value="<?= $fornecedor['id'] ?>">
+                            <?= $fornecedor['nome'] ?>
                         </option>
                     <?php endforeach ?>
 
