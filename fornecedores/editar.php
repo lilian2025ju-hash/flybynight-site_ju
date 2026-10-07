@@ -2,7 +2,7 @@
 //fornecedores/editar.php
 require_once "../src/fornecedor_crud.php";
 
-//Acessar a URL e "pegar" o vLOR DO PARÂMETRO (id) existente nela
+//Acessar a URL e "pegar" o VALOR DO PARÂMETRO (id) existente nela
 //Atenção ao nome do parâmetro que você criou no link dinâmico.
 //Deve ser o mesmo ao passar para o $ Get
 $id =$_GET['id'];

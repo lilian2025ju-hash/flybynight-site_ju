@@ -1,3 +1,34 @@
+<?php
+
+
+/* Exercicios */
+
+// PARTE 1
+
+// 1) Importar os arquivos de função de fornecedores e produtos
+
+require_once "../src/fornecedor_crud.php";
+require_once "../src/produto_crud.php";
+
+// 2) Capturar e guardar o id do produto que será carregado/atualizado
+$id =$_GET['id']?? null;
+
+// 3) Chamar a função buscarFornecedores e receber a lista de fornecedores
+//(guarde em um variável chamada $fornecedores)
+
+$fornecedores = buscarFornecedores($conexao);
+
+// 4) Chamar a função buscarProdutoPorId e receber os dados do produto
+//(guarde em uma variável chamada $produto)
+$produto = buscarProdutoPorId($conexao, $id);
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -16,30 +47,38 @@
     ?>
     <main>
         <h2>Editar produto</h2>
-        <!-- Modelo visual: os campos não são enviados nem persistidos. -->
-        <!-- Os campos serão preenchidos com os dados do registro selecionado. -->
+         <!-- 5) Exibir os dados do produto em cada campo do formulário No caso dos campos input, use o atributo value.
+          No caso do campo textarea, coloque o valor dentro da tag -->
         <form action="" method="post">
             <div>
                 <label for="nome">Nome:</label>
-                <input type="text" name="nome" id="nome" maxlength="100" required>
+                <input type="text" name="nome" id="nome" maxlength="100" value="<?= $produto['nome'] ?>" required>
             </div>
             <div>
                 <label for="descricao">Descrição:</label>
-                <textarea name="descricao" id="descricao" rows="5"></textarea>
+                <textarea name="descricao" id="descricao" rows="5"><?= $produto['descricao'] ?></textarea>
             </div>
             <div>
                 <label for="preco">Preço:</label>
-                <input type="number" name="preco" id="preco" min="0" step="0.01" required>
+                <input type="number" name="preco" id="preco" min="0" step="0.01" value="<?= $produto ['preco'] ?>">
             </div>
             <div>
                 <label for="quantidade">Quantidade:</label>
-                <input type="number" name="quantidade" id="quantidade" min="0" step="1" required>
+                <input type="number" name="quantidade" id="quantidade" min="0" step="1" value="<?= $produto['quantidade'] ?>" required>
             </div>
             <div>
                 <label for="fornecedor">Fornecedor:</label>
                 <select name="fornecedor" id="fornecedor" required>
                     <option value="">Selecione</option>
-                    <!-- As opções serão preenchidas com os registros do banco de dados. -->
+                    <!-- Parte 1 -->
+                    <!-- 6) DESAFIO
+                     6.1) Usando foreach, acessa os $fornecedores e mostre na tag <option> os nomes decada fornecedor.
+                        NO atr-->
+                   <?php foreach ($fornecedores as $fornecedor): ?>
+                        <option <?= $fornecedor["id"] ===$produto["fornecedor_id"]? 'selected' : ''?> value="<?= $fornecedor['id'] ?>">
+                            <?= $fornecedor['nome'] ?>
+                        </option>
+                    <?php endforeach ?>
                 </select>
             </div>
             <button type="submit">Atualizar</button>
