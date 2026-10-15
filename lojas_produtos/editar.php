@@ -1,3 +1,26 @@
+<?php
+require_once "../src/lojas_produtos_crud.php";
+
+$loja_id = $_GET['loja_id'];
+$produto_id = $_GET['produto_id'];
+
+$registro = buscarFornecedorPorId($conexao, $loja_id, $produto_id );
+
+$lojas = buscarLojas($conexao);
+$produtos = buscarLojasProdutos($conexao);
+
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+
+
+}
+
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 

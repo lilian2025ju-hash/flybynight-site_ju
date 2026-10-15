@@ -1,5 +1,7 @@
 <?php
 // src/fornecedor_crud.php
+
+
  
 //todas as funções criadas neste arquivo precisarão do script de conexão
 require_once "conecta.php";
